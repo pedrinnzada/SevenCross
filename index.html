@@ -2,516 +2,558 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Seven Cross | Transforme seu corpo. Supere seus limites. 💪</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seven Cross — Supere Seus Limites</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
-  <!-- AOS Library -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script>
+
+  <!-- Three.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
 <body>
 
-  <!-- ========== CURSOR CUSTOM ========== -->
-  <div class="cursor"></div>
-  <div class="cursor-follower"></div>
+  <!-- ═══════════════════════════════ CURSOR CUSTOM ═══════ -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
 
-  <!-- ========== LOADER ========== -->
-  <div id="loader">
+  <!-- ═══════════════════════════════ LOADER ═══════════════ -->
+  <div class="loader" id="loader">
     <div class="loader-inner">
-      <div class="loader-logo">SEVEN<span>CROSS</span></div>
-      <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-      <p>Carregando experiência... 🔥</p>
+      <div class="loader-logo">SC</div>
+      <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+      <div class="loader-text" id="loaderText">Carregando experiência...</div>
     </div>
   </div>
 
-  <!-- ========== NAVBAR ========== -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">SEVEN<span>CROSS</span></a>
-      <div class="nav-links" id="navLinks">
-        <a href="#sobre" class="nav-link"><span>01</span>Sobre</a>
-        <a href="#planos" class="nav-link"><span>02</span>Planos</a>
-        <a href="#galeria" class="nav-link"><span>03</span>Galeria</a>
-        <a href="#depoimentos" class="nav-link"><span>04</span>Depoimentos</a>
-        <a href="#localizacao" class="nav-link"><span>05</span>Localização</a>
-        <a href="#contato" class="nav-link"><span>06</span>Contato</a>
-        <a href="https://wa.me/5531988077126?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20Seven%20Cross%20💪" target="_blank" class="nav-cta">Matricule-se 🚀</a>
-      </div>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- ═══════════════════════════════ NAV ══════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav-logo">
+      <span class="logo-sc">SEVEN</span><span class="logo-cross">CROSS</span>
     </div>
+    <ul class="nav-links">
+      <li><a href="#sobre" class="nav-link">Sobre</a></li>
+      <li><a href="#planos" class="nav-link">Planos</a></li>
+      <li><a href="#galeria" class="nav-link">Galeria</a></li>
+      <li><a href="#depoimentos" class="nav-link">Depoimentos</a></li>
+      <li><a href="#contato" class="nav-link">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-nav liquid-btn">
+      <span>Começar agora</span>
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- ========== HERO SECTION ========== -->
-  <section id="hero">
-    <canvas id="particleCanvas"></canvas>
-    <div class="hero-grid-overlay"></div>
-    <div class="hero-content">
-      <div class="hero-badge">🔥 Academia Premium em BH</div>
-      <h1 class="hero-title">
-        <span class="title-line">TRANSFORME</span>
-        <span class="title-line accent">SEU CORPO.</span>
-        <span class="title-line">SUPERE SEUS</span>
-        <span class="title-line accent">LIMITES. 💪</span>
-      </h1>
-      <p class="hero-sub">Equipamentos de última geração · Instrutores certificados · Resultados reais</p>
-      <div class="hero-buttons">
-        <a href="https://wa.me/5531988077126?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20Seven%20Cross%20💪" target="_blank" class="btn-primary">
-          <span class="btn-glow"></span>
-          Começar agora 🚀
-        </a>
-        <a href="#planos" class="btn-secondary">Ver Planos</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat"><strong>+2.500</strong><span>Alunos</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><strong>7</strong><span>Anos</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><strong>24/7</strong><span>Suporte</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat"><strong>100%</strong><span>Resultado</span></div>
-      </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <!-- ========== WAVE SECTION ========== -->
-  <div class="wave-section">
-    <canvas id="waveCanvas"></canvas>
-    <div class="wave-content">
-      <p class="wave-text">🏋️‍♂️ Musculação &nbsp;·&nbsp; 🥊 Boxe &nbsp;·&nbsp; 🧘 Yoga &nbsp;·&nbsp; 🚴 Spinning &nbsp;·&nbsp; 🏃 Funcional &nbsp;·&nbsp; 💪 CrossFit</p>
-    </div>
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#sobre" class="mobile-link">Sobre</a></li>
+      <li><a href="#planos" class="mobile-link">Planos</a></li>
+      <li><a href="#galeria" class="mobile-link">Galeria</a></li>
+      <li><a href="#depoimentos" class="mobile-link">Depoimentos</a></li>
+      <li><a href="#contato" class="mobile-link">Contato</a></li>
+      <li><a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="mobile-link whatsapp">WhatsApp</a></li>
+    </ul>
   </div>
 
-  <!-- ========== SOBRE SECTION ========== -->
-  <section id="sobre">
+  <!-- ═══════════════════════════════ HERO ═════════════════ -->
+  <section class="hero" id="hero">
+    <!-- Three.js canvas fundo -->
+    <canvas id="heroCanvas"></canvas>
+
+    <!-- Noise overlay -->
+    <div class="noise-overlay"></div>
+
+    <div class="hero-content">
+      <div class="hero-tag">Academia Premium · Est. 2017</div>
+
+      <!-- Tipografia interativa -->
+      <h1 class="hero-title" id="heroTitle">
+        <span class="title-word" data-word="SEVEN">SEVEN</span>
+        <span class="title-word accent" data-word="CROSS">CROSS</span>
+      </h1>
+
+      <p class="hero-tagline">
+        <span class="tagline-char">Supere</span>
+        <span class="tagline-char">seus</span>
+        <span class="tagline-char highlight">limites</span>
+        <span class="tagline-char">💪🔥</span>
+      </p>
+
+      <p class="hero-sub">Treinamento de alto nível. Resultados reais. Comunidade que transforma.</p>
+
+      <div class="hero-ctas">
+        <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-primary liquid-btn">
+          <span class="btn-text">Começar agora 🚀</span>
+          <div class="btn-liquid"></div>
+        </a>
+        <a href="#planos" class="btn-ghost">
+          <span>Ver planos</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+
+      <!-- Stats bar -->
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num" data-target="1500">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Alunos ativos</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="7">0</span>
+          <span class="stat-label">Anos de excelência</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="98">0</span><span class="stat-plus">%</span>
+          <span class="stat-label">Satisfação</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ SOBRE ════════════════ -->
+  <section class="sobre" id="sobre">
     <div class="container">
       <div class="sobre-grid">
-        <div class="sobre-visual" data-aos="fade-right" data-aos-duration="1000">
-          <div class="sobre-image-frame">
-            <div class="sobre-img-placeholder">
-              <div class="gym-icon-large">🏋️‍♂️</div>
-              <div class="sobre-glow-ring"></div>
-            </div>
-            <div class="sobre-badge-float badge-1">💪 Força Total</div>
-            <div class="sobre-badge-float badge-2">🔥 +2500 Alunos</div>
-            <div class="sobre-badge-float badge-3">⭐ Premium</div>
-          </div>
+        <div class="sobre-left reveal-left">
+          <div class="section-tag">/ Nossa história</div>
+          <h2 class="section-title">Mais que uma <em>academia.</em> Uma <span class="glow-text">revolução.</span></h2>
+          <p class="sobre-text">Na Seven Cross, acreditamos que o limite é apenas o começo. Com infraestrutura de ponta, profissionais certificados e uma metodologia exclusiva, transformamos corpos e mentalidades.</p>
+          <p class="sobre-text">Desde 2017, mais de 1.500 alunos descobriram seu potencial máximo em nosso espaço premium. Tecnologia, ciência e paixão pelo esporte em cada detalhe.</p>
+          <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-primary liquid-btn">
+            <span class="btn-text">Agendar visita</span>
+            <div class="btn-liquid"></div>
+          </a>
         </div>
-        <div class="sobre-text" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-          <div class="section-tag">Quem somos</div>
-          <h2 class="section-title">A Academia que vai <span class="highlight">mudar sua vida</span> 🔥</h2>
-          <p>A <strong>Seven Cross</strong> nasceu com um único propósito: transformar vidas através do esporte e da disciplina. Não somos apenas uma academia — somos uma comunidade de guerreiros que se superam todos os dias.</p>
-          <p>Com equipamentos de última geração, instrutores altamente qualificados e um ambiente projetado para extrair o máximo de cada treino, garantimos que você alcance os resultados que sempre sonhou.</p>
-          <div class="sobre-features">
-            <div class="feature-item">
-              <div class="feature-icon">⚡</div>
-              <div>
-                <strong>Equipamentos Top</strong>
-                <span>Linha premium importada</span>
-              </div>
+        <div class="sobre-right reveal-right">
+          <div class="sobre-cards">
+            <div class="sobre-card tilt-card">
+              <div class="card-icon">⚡</div>
+              <h3>Alta Performance</h3>
+              <p>Equipamentos de última geração para resultados extraordinários</p>
             </div>
-            <div class="feature-item">
-              <div class="feature-icon">🎯</div>
-              <div>
-                <strong>Personal Trainer</strong>
-                <span>Treino 100% personalizado</span>
-              </div>
+            <div class="sobre-card tilt-card accent-card">
+              <div class="card-icon">🏆</div>
+              <h3>Metodologia Exclusiva</h3>
+              <p>Protocolos de treino desenvolvidos por especialistas</p>
             </div>
-            <div class="feature-item">
-              <div class="feature-icon">🏆</div>
-              <div>
-                <strong>Resultados Reais</strong>
-                <span>Método comprovado</span>
-              </div>
+            <div class="sobre-card tilt-card">
+              <div class="card-icon">🔬</div>
+              <h3>Ciência do Esporte</h3>
+              <p>Nutrição, recuperação e performance integrados</p>
             </div>
-            <div class="feature-item">
-              <div class="feature-icon">🌟</div>
-              <div>
-                <strong>Ambiente Premium</strong>
-                <span>Estrutura de alto padrão</span>
-              </div>
+            <div class="sobre-card tilt-card">
+              <div class="card-icon">🤝</div>
+              <h3>Comunidade Forte</h3>
+              <p>Uma família que se apoia e celebra cada conquista</p>
             </div>
           </div>
-          <a href="https://wa.me/5531988077126?text=Olá!%20Quero%20conhecer%20a%20Seven%20Cross%20💪" target="_blank" class="btn-primary">Conhecer a Academia 🏋️‍♂️</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== PLANOS SECTION ========== -->
-  <section id="planos">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <div class="section-tag">Investimento</div>
-        <h2 class="section-title">Escolha seu <span class="highlight">Plano</span> 💎</h2>
-        <p>Sem desculpas. Comece hoje mesmo com o plano ideal para você.</p>
-      </div>
-      <div class="planos-grid">
+  <!-- ═══════════════════════════════ ONDAS (seção especial) ═══ -->
+  <section class="wave-section">
+    <canvas id="waveCanvas"></canvas>
+    <div class="wave-content">
+      <p class="wave-quote">"O maior obstáculo está dentro de você.<br>Nós te ajudamos a quebrá-lo."</p>
+      <span class="wave-author">— Equipe Seven Cross</span>
+    </div>
+  </section>
 
-        <!-- Básico -->
-        <div class="plano-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="plano-tag">Básico</div>
-          <div class="plano-icon">🥈</div>
-          <h3>Plano Mensal</h3>
-          <div class="plano-price">
-            <span class="price-currency">R$</span>
-            <span class="price-value">89</span>
-            <span class="price-period">/mês</span>
+  <!-- ═══════════════════════════════ PLANOS ═══════════════ -->
+  <section class="planos" id="planos">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-tag">/ Escolha seu plano</div>
+        <h2 class="section-title">Investimento que <span class="glow-text">transforma</span></h2>
+        <p class="section-sub">Planos flexíveis para todos os perfis. Sem taxa de matrícula em planos anuais.</p>
+      </div>
+
+      <div class="planos-grid">
+        <!-- Mensal -->
+        <div class="plano-card tilt-card reveal-up" data-delay="0">
+          <div class="plano-badge">Básico</div>
+          <div class="plano-icon">🌱</div>
+          <h3 class="plano-nome">Mensal</h3>
+          <div class="plano-preco">
+            <span class="preco-cifrão">R$</span>
+            <span class="preco-valor">149</span>
+            <span class="preco-per">/mês</span>
           </div>
           <ul class="plano-features">
-            <li>✅ Acesso a todas as salas</li>
-            <li>✅ Musculação completa</li>
-            <li>✅ Avaliação física</li>
-            <li>✅ Armário individual</li>
-            <li>✅ Wi-Fi gratuito</li>
-            <li>❌ Aulas coletivas</li>
-            <li>❌ Personal trainer</li>
+            <li>✓ Acesso livre à musculação</li>
+            <li>✓ Avaliação física inicial</li>
+            <li>✓ App de treinos</li>
+            <li>✓ Vestiários premium</li>
+            <li class="disabled">✗ Aulas coletivas</li>
+            <li class="disabled">✗ Personal trainer</li>
           </ul>
-          <a href="https://wa.me/5531988077126?text=Olá!%20Tenho%20interesse%20no%20Plano%20Mensal%20Básico%20da%20Seven%20Cross%20💪" target="_blank" class="btn-plano">Quero Este Plano</a>
+          <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-ghost plano-btn">
+            <span>Assinar agora</span>
+          </a>
         </div>
 
-        <!-- Premium -->
-        <div class="plano-card featured" data-aos="fade-up" data-aos-delay="200">
-          <div class="plano-popular">⭐ MAIS POPULAR</div>
-          <div class="plano-tag">Premium</div>
-          <div class="plano-icon">🥇</div>
-          <h3>Plano Premium</h3>
-          <div class="plano-price">
-            <span class="price-currency">R$</span>
-            <span class="price-value">159</span>
-            <span class="price-period">/mês</span>
+        <!-- Premium — destaque -->
+        <div class="plano-card tilt-card plano-featured reveal-up" data-delay="0.15">
+          <div class="plano-badge popular">Mais Popular</div>
+          <div class="plano-glow-ring"></div>
+          <div class="plano-icon">🔥</div>
+          <h3 class="plano-nome">Premium</h3>
+          <div class="plano-preco">
+            <span class="preco-cifrão">R$</span>
+            <span class="preco-valor">229</span>
+            <span class="preco-per">/mês</span>
           </div>
           <ul class="plano-features">
-            <li>✅ Acesso a todas as salas</li>
-            <li>✅ Musculação completa</li>
-            <li>✅ Avaliação física mensal</li>
-            <li>✅ Armário individual</li>
-            <li>✅ Wi-Fi gratuito</li>
-            <li>✅ Todas as aulas coletivas</li>
-            <li>❌ Personal trainer</li>
+            <li>✓ Tudo do Mensal</li>
+            <li>✓ Todas as aulas coletivas</li>
+            <li>✓ 4 sessões de personal/mês</li>
+            <li>✓ Nutricionista online</li>
+            <li>✓ Acesso 24h</li>
+            <li>✓ Suplementos na loja</li>
           </ul>
-          <a href="https://wa.me/5531988077126?text=Olá!%20Tenho%20interesse%20no%20Plano%20Premium%20da%20Seven%20Cross%20💪" target="_blank" class="btn-plano featured-btn">Quero Este Plano 🔥</a>
+          <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-primary liquid-btn plano-btn">
+            <span class="btn-text">Assinar agora</span>
+            <div class="btn-liquid"></div>
+          </a>
         </div>
 
         <!-- Anual -->
-        <div class="plano-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="plano-tag economy">Economia 40%</div>
+        <div class="plano-card tilt-card reveal-up" data-delay="0.3">
+          <div class="plano-badge">Melhor valor</div>
           <div class="plano-icon">💎</div>
-          <h3>Plano Anual</h3>
-          <div class="plano-price">
-            <span class="price-currency">R$</span>
-            <span class="price-value">99</span>
-            <span class="price-period">/mês</span>
+          <h3 class="plano-nome">Anual</h3>
+          <div class="plano-preco">
+            <span class="preco-cifrão">R$</span>
+            <span class="preco-valor">179</span>
+            <span class="preco-per">/mês</span>
           </div>
-          <p class="price-note">Cobrado R$ 1.188/ano</p>
+          <div class="preco-economia">Economize R$600/ano · Sem matrícula</div>
           <ul class="plano-features">
-            <li>✅ Acesso a todas as salas</li>
-            <li>✅ Musculação completa</li>
-            <li>✅ Avaliação física mensal</li>
-            <li>✅ Armário individual VIP</li>
-            <li>✅ Wi-Fi gratuito</li>
-            <li>✅ Todas as aulas coletivas</li>
-            <li>✅ 2x Personal trainer/mês</li>
+            <li>✓ Tudo do Premium</li>
+            <li>✓ Personal ilimitado</li>
+            <li>✓ Nutricionista presencial</li>
+            <li>✓ Prioridade nas aulas</li>
+            <li>✓ Kit Seven Cross</li>
+            <li>✓ Acesso a eventos VIP</li>
           </ul>
-          <a href="https://wa.me/5531988077126?text=Olá!%20Tenho%20interesse%20no%20Plano%20Anual%20da%20Seven%20Cross%20💎" target="_blank" class="btn-plano">Quero Este Plano</a>
+          <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-ghost plano-btn">
+            <span>Assinar agora</span>
+          </a>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ========== GALERIA SECTION ========== -->
-  <section id="galeria">
+  <!-- ═══════════════════════════════ GALERIA ═══════════════ -->
+  <section class="galeria" id="galeria">
     <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <div class="section-tag">Estrutura</div>
-        <h2 class="section-title">Nossa <span class="highlight">Galeria</span> 📸</h2>
-        <p>Confira nossa estrutura de alto padrão</p>
+      <div class="section-header reveal-up">
+        <div class="section-tag">/ Nossa estrutura</div>
+        <h2 class="section-title">Ambiente que <span class="glow-text">inspira</span></h2>
       </div>
-      <div class="galeria-grid" data-aos="fade-up" data-aos-delay="200">
-        <div class="galeria-item large">
-          <div class="galeria-placeholder">
-            <span>🏋️‍♂️</span>
-            <p>Sala de Musculação</p>
+    </div>
+
+    <div class="galeria-grid">
+      <div class="galeria-item galeria-big reveal-up" data-delay="0">
+        <div class="galeria-inner">
+          <div class="galeria-bg" style="background:linear-gradient(135deg,#1a0a2e,#2d1b4e)">
+            <div class="galeria-icon-big">🏋️</div>
           </div>
-          <div class="galeria-overlay"><span>Sala de Musculação</span></div>
-        </div>
-        <div class="galeria-item">
-          <div class="galeria-placeholder">
-            <span>🥊</span>
-            <p>Sala de Boxe</p>
+          <div class="galeria-overlay">
+            <span>Musculação</span>
           </div>
-          <div class="galeria-overlay"><span>Sala de Boxe</span></div>
         </div>
-        <div class="galeria-item">
-          <div class="galeria-placeholder">
-            <span>🚴</span>
-            <p>Spinning</p>
+      </div>
+      <div class="galeria-item reveal-up" data-delay="0.1">
+        <div class="galeria-inner">
+          <div class="galeria-bg" style="background:linear-gradient(135deg,#0a1a2e,#1b2d4e)">
+            <div class="galeria-icon-big">🥊</div>
           </div>
-          <div class="galeria-overlay"><span>Sala de Spinning</span></div>
+          <div class="galeria-overlay"><span>Boxe</span></div>
         </div>
-        <div class="galeria-item">
-          <div class="galeria-placeholder">
-            <span>🧘</span>
-            <p>Yoga & Pilates</p>
+      </div>
+      <div class="galeria-item reveal-up" data-delay="0.2">
+        <div class="galeria-inner">
+          <div class="galeria-bg" style="background:linear-gradient(135deg,#1a2e0a,#2d4e1b)">
+            <div class="galeria-icon-big">🧘</div>
           </div>
           <div class="galeria-overlay"><span>Yoga & Pilates</span></div>
         </div>
-        <div class="galeria-item">
-          <div class="galeria-placeholder">
-            <span>🏃</span>
-            <p>Funcional</p>
+      </div>
+      <div class="galeria-item reveal-up" data-delay="0.3">
+        <div class="galeria-inner">
+          <div class="galeria-bg" style="background:linear-gradient(135deg,#2e1a0a,#4e2d1b)">
+            <div class="galeria-icon-big">🚴</div>
           </div>
-          <div class="galeria-overlay"><span>Área Funcional</span></div>
-        </div>
-        <div class="galeria-item large-v">
-          <div class="galeria-placeholder">
-            <span>🛁</span>
-            <p>Vestiários</p>
-          </div>
-          <div class="galeria-overlay"><span>Vestiários Premium</span></div>
+          <div class="galeria-overlay"><span>Spinning</span></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ========== DEPOIMENTOS SECTION ========== -->
-  <section id="depoimentos">
-    <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <div class="section-tag">Resultados reais</div>
-        <h2 class="section-title">O que nossos <span class="highlight">alunos</span> dizem ⭐</h2>
-      </div>
-      <div class="depoimentos-slider" data-aos="fade-up" data-aos-delay="200">
-        <div class="depoimentos-track" id="depoimentosTrack">
-
-          <div class="depoimento-card">
-            <div class="dep-stars">⭐⭐⭐⭐⭐</div>
-            <p>"A Seven Cross mudou completamente minha vida! Perdi 18kg em 6 meses com o acompanhamento dos instrutores incríveis. Ambiente motivador e equipamentos top!"</p>
-            <div class="dep-author">
-              <div class="dep-avatar">M</div>
-              <div>
-                <strong>Marcos Silva</strong>
-                <span>Aluno há 8 meses 🏆</span>
-              </div>
-            </div>
+      <div class="galeria-item galeria-wide reveal-up" data-delay="0.4">
+        <div class="galeria-inner">
+          <div class="galeria-bg" style="background:linear-gradient(135deg,#2e0a1a,#4e1b2d)">
+            <div class="galeria-icon-big">🏊</div>
           </div>
-
-          <div class="depoimento-card">
-            <div class="dep-stars">⭐⭐⭐⭐⭐</div>
-            <p>"Melhor academia de BH sem dúvidas! Os personais são extremamente qualificados e o ambiente é muito motivador. Recomendo demais! 💪🔥"</p>
-            <div class="dep-author">
-              <div class="dep-avatar">A</div>
-              <div>
-                <strong>Ana Carolina</strong>
-                <span>Aluna há 1 ano 💎</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="depoimento-card">
-            <div class="dep-stars">⭐⭐⭐⭐⭐</div>
-            <p>"Finalmente uma academia com estrutura de verdade! As aulas de boxe são incríveis e o espaço é super bem cuidado. Vale cada centavo investido!"</p>
-            <div class="dep-author">
-              <div class="dep-avatar">R</div>
-              <div>
-                <strong>Rafael Costa</strong>
-                <span>Aluno há 5 meses 🥊</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="depoimento-card">
-            <div class="dep-stars">⭐⭐⭐⭐⭐</div>
-            <p>"A equipe da Seven Cross é sensacional! Me ajudaram a ganhar 8kg de massa muscular com um programa personalizado. Resultado real e rápido! 🚀"</p>
-            <div class="dep-author">
-              <div class="dep-avatar">L</div>
-              <div>
-                <strong>Lucas Fernandes</strong>
-                <span>Aluno há 7 meses 💪</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="depoimento-card">
-            <div class="dep-stars">⭐⭐⭐⭐⭐</div>
-            <p>"As aulas de yoga e spinning são maravilhosas! Professores atenciosos, ambiente limpo e acolhedor. Me sinto em casa aqui na Seven Cross! 🧘✨"</p>
-            <div class="dep-author">
-              <div class="dep-avatar">J</div>
-              <div>
-                <strong>Juliana Moreira</strong>
-                <span>Aluna há 9 meses 🌟</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <div class="slider-controls">
-          <button class="slider-btn" id="prevBtn">‹</button>
-          <div class="slider-dots" id="sliderDots"></div>
-          <button class="slider-btn" id="nextBtn">›</button>
+          <div class="galeria-overlay"><span>Área de Recuperação</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== LOCALIZAÇÃO SECTION ========== -->
-  <section id="localizacao">
+  <!-- ═══════════════════════════════ DEPOIMENTOS ═══════════ -->
+  <section class="depoimentos" id="depoimentos">
     <div class="container">
-      <div class="section-header" data-aos="fade-up">
-        <div class="section-tag">Onde estamos</div>
-        <h2 class="section-title">Nossa <span class="highlight">Localização</span> 📍</h2>
+      <div class="section-header reveal-up">
+        <div class="section-tag">/ Histórias reais</div>
+        <h2 class="section-title">Quem treina na <span class="glow-text">Seven Cross</span></h2>
       </div>
-      <div class="localizacao-grid">
-        <div class="localizacao-info" data-aos="fade-right">
-          <div class="info-card">
-            <div class="info-icon">📍</div>
+
+      <div class="dep-slider" id="depSlider">
+        <div class="dep-track" id="depTrack">
+
+          <div class="dep-card tilt-card">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-text">"Perdi 18kg em 6 meses com o suporte incrível dos professores. Minha vida mudou completamente. A Seven Cross é muito mais que uma academia!"</p>
+            <div class="dep-author">
+              <div class="dep-avatar">MR</div>
+              <div>
+                <strong>Marcos Ribeiro</strong>
+                <span>Aluno há 2 anos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dep-card tilt-card">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-text">"O ambiente é incrível, os equipamentos são top e a equipe é super dedicada. Me sinto em casa toda vez que entro aqui. Indico para todos!"</p>
+            <div class="dep-author">
+              <div class="dep-avatar">AC</div>
+              <div>
+                <strong>Ana Costa</strong>
+                <span>Aluna há 1 ano</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dep-card tilt-card">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-text">"Comecei do zero e hoje compito. A metodologia da Seven Cross é diferenciada — ciência aplicada ao treino. Resultado real, sem enganação."</p>
+            <div class="dep-author">
+              <div class="dep-avatar">JP</div>
+              <div>
+                <strong>João Pedro</strong>
+                <span>Aluno há 3 anos</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="dep-card tilt-card">
+            <div class="dep-stars">★★★★★</div>
+            <p class="dep-text">"O plano Premium vale muito o investimento. Personal trainer, nutricionista, aulas coletivas — tudo de qualidade excepcional. Recomendo demais!"</p>
+            <div class="dep-author">
+              <div class="dep-avatar">LS</div>
+              <div>
+                <strong>Letícia Santos</strong>
+                <span>Aluna há 8 meses</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="dep-controls">
+          <button class="dep-btn" id="depPrev">←</button>
+          <div class="dep-dots" id="depDots"></div>
+          <button class="dep-btn" id="depNext">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ LOCALIZAÇÃO ══════════ -->
+  <section class="localizacao" id="localizacao">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-tag">/ Onde nos encontrar</div>
+        <h2 class="section-title">Venha nos <span class="glow-text">visitar</span></h2>
+      </div>
+      <div class="loc-grid">
+        <div class="loc-info reveal-left">
+          <div class="loc-item">
+            <div class="loc-icon">📍</div>
             <div>
               <strong>Endereço</strong>
-              <p>Belo Horizonte, MG<br>Brasil</p>
+              <p>Rua das Flores, 777 — Centro<br>Sete Lagoas, MG — 35701-000</p>
             </div>
           </div>
-          <div class="info-card">
-            <div class="info-icon">🕐</div>
+          <div class="loc-item">
+            <div class="loc-icon">🕐</div>
             <div>
               <strong>Horário de Funcionamento</strong>
-              <p>Segunda a Sexta: 6h às 22h<br>Sábado: 8h às 18h<br>Domingo: 8h às 14h</p>
+              <p>Segunda a Sexta: 05h às 23h<br>Sábado: 06h às 20h<br>Domingo: 08h às 14h</p>
             </div>
           </div>
-          <div class="info-card">
-            <div class="info-icon">📲</div>
+          <div class="loc-item">
+            <div class="loc-icon">📱</div>
             <div>
               <strong>WhatsApp</strong>
               <p>(31) 98807-7126</p>
             </div>
           </div>
-          <a href="https://wa.me/5531988077126?text=Olá!%20Quero%20saber%20a%20localização%20exata%20da%20Seven%20Cross%20📍" target="_blank" class="btn-primary">Como Chegar 📍</a>
+          <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-primary liquid-btn">
+            <span class="btn-text">Falar no WhatsApp 💬</span>
+            <div class="btn-liquid"></div>
+          </a>
         </div>
-        <div class="localizacao-map" data-aos="fade-left">
+        <div class="loc-map reveal-right">
           <div class="map-container">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240236.95783568784!2d-44.11339975!3d-19.9166813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690e577504c8f%3A0x4729b63f67f0dd3d!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-              width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60200.48!2d-44.245!3d-19.465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa6952f97b7ce77%3A0xb9c5b50e05c1f7b2!2sSete%20Lagoas%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+              width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" title="Localização Seven Cross">
             </iframe>
+            <div class="map-overlay-pin">
+              <span>📍 Seven Cross</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTATO / CTA SECTION ========== -->
-  <section id="contato">
-    <div class="container">
-      <div class="cta-box" data-aos="zoom-in">
-        <div class="cta-glow"></div>
-        <div class="cta-content">
-          <div class="cta-emoji">🔥</div>
-          <h2>Pronto para transformar sua vida?</h2>
-          <p>Entre em contato agora e comece sua jornada rumo ao corpo dos seus sonhos. Nossa equipe está pronta para te atender! 💪</p>
-          <div class="cta-buttons">
-            <a href="https://wa.me/5531988077126?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20Seven%20Cross%20💪" target="_blank" class="btn-whatsapp">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="22" height="22" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-              Falar no WhatsApp
-            </a>
-            <a href="tel:+5531988077126" class="btn-secondary">📞 Ligar Agora</a>
-          </div>
-          <div class="horario-chips">
-            <span>⏰ Seg-Sex: 6h-22h</span>
-            <span>🗓 Sáb: 8h-18h</span>
-            <span>☀️ Dom: 8h-14h</span>
-          </div>
-        </div>
-      </div>
+  <!-- ═══════════════════════════════ CONTATO / CTA ════════ -->
+  <section class="cta-section" id="contato">
+    <canvas id="ctaCanvas"></canvas>
+    <div class="cta-content reveal-up">
+      <div class="section-tag">/ Pronto para começar?</div>
+      <h2 class="cta-title">Sua transformação começa<br><span class="glow-text">hoje.</span></h2>
+      <p class="cta-sub">Entre em contato agora e receba uma avaliação física gratuita.</p>
+      <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-primary liquid-btn btn-big">
+        <span class="btn-text">💬 Falar no WhatsApp agora</span>
+        <div class="btn-liquid"></div>
+      </a>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer id="footer">
+  <!-- ═══════════════════════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <div class="footer-logo">SEVEN<span>CROSS</span></div>
-          <p>Transformando vidas através do esporte e da disciplina. Venha fazer parte da nossa comunidade! 💪🔥</p>
+          <p>Supere seus limites. Todos os dias.</p>
           <div class="footer-social">
-            <a href="#" class="social-btn">📸 Instagram</a>
-            <a href="#" class="social-btn">📘 Facebook</a>
-            <a href="https://wa.me/5531988077126" target="_blank" class="social-btn">💬 WhatsApp</a>
+            <a href="#" class="social-btn" aria-label="Instagram">IG</a>
+            <a href="#" class="social-btn" aria-label="Facebook">FB</a>
+            <a href="#" class="social-btn" aria-label="YouTube">YT</a>
           </div>
         </div>
         <div class="footer-links">
-          <h4>Links Rápidos</h4>
-          <a href="#sobre">Sobre nós</a>
-          <a href="#planos">Planos</a>
-          <a href="#galeria">Galeria</a>
-          <a href="#depoimentos">Depoimentos</a>
-          <a href="#localizacao">Localização</a>
-          <a href="#contato">Contato</a>
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#planos">Planos</a></li>
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Modalidades</h4>
+          <ul>
+            <li><a href="#">Musculação</a></li>
+            <li><a href="#">Boxe & Luta</a></li>
+            <li><a href="#">Yoga & Pilates</a></li>
+            <li><a href="#">Spinning</a></li>
+            <li><a href="#">Funcional</a></li>
+          </ul>
         </div>
         <div class="footer-contact">
           <h4>Contato</h4>
-          <p>📲 (31) 98807-7126</p>
-          <p>📍 Belo Horizonte, MG</p>
-          <p>⏰ Seg-Sex: 6h às 22h</p>
-          <p>🗓 Sáb: 8h às 18h</p>
-          <p>☀️ Dom: 8h às 14h</p>
+          <p>📍 Sete Lagoas, MG</p>
+          <p>📱 (31) 98807-7126</p>
+          <p>🕐 Seg–Sex: 05h–23h</p>
+          <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA" target="_blank" class="btn-ghost footer-wa">
+            <span>WhatsApp</span>
+          </a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 Seven Cross Academia. Todos os direitos reservados.</p>
-        <p>Desenvolvido por <strong>Pedro Nascimento</strong> 🚀</p>
+        <p>© 2025 Seven Cross. Todos os direitos reservados.</p>
+        <p class="footer-dev">Desenvolvido por <strong>Pedro Nascimento 🚀</strong></p>
       </div>
     </div>
   </footer>
 
-  <!-- ========== WHATSAPP FLOAT BUTTON ========== -->
-  <a href="https://wa.me/5531988077126?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20planos%20da%20Seven%20Cross%20💪" target="_blank" class="whatsapp-float" id="whatsappFloat">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="28" height="28" fill="white"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
-    <span class="whatsapp-tooltip">Fale conosco! 💬</span>
+  <!-- ═══════════════════════════════ WHATSAPP FLOAT ═══════ -->
+  <a href="https://wa.me/5531988077126?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20a%20Seven%20Cross%20%F0%9F%92%AA"
+     target="_blank"
+     class="wa-float"
+     id="waFloat"
+     aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.118 1.525 5.847L.057 23.882l6.195-1.443A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.652-.495-5.178-1.362l-.37-.218-3.679.856.873-3.582-.24-.387A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+    <div class="wa-pulse"></div>
   </a>
 
-  <!-- ========== CHATBOT ========== -->
-  <div class="chatbot-wrapper" id="chatbotWrapper">
-    <div class="chatbot-btn" id="chatbotBtn">
-      <span class="chatbot-icon">🤖</span>
-      <span class="chatbot-badge" id="chatBadge">1</span>
+  <!-- ═══════════════════════════════ CHATBOT ══════════════ -->
+  <div class="chatbot-btn" id="chatbotBtn" aria-label="Abrir chat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <div class="chat-notif">1</div>
+  </div>
+
+  <div class="chatbot-window" id="chatbotWindow">
+    <div class="chat-header">
+      <div class="chat-avatar">SC</div>
+      <div class="chat-info">
+        <strong>Seven Cross Bot</strong>
+        <span class="online">● Online agora</span>
+      </div>
+      <button class="chat-close" id="chatClose">✕</button>
     </div>
-    <div class="chatbot-box" id="chatbotBox">
-      <div class="chat-header">
-        <div class="chat-avatar">🤖</div>
-        <div>
-          <strong>Seven Bot</strong>
-          <span>Online agora ✅</span>
-        </div>
-        <button class="chat-close" id="chatClose">✕</button>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <div class="msg-bubble">Olá! 👋 Bem-vindo à <strong>Seven Cross</strong>! Como posso ajudar você hoje?</div>
       </div>
-      <div class="chat-messages" id="chatMessages">
-        <div class="chat-msg bot">
-          <p>Olá! 👋 Bem-vindo à <strong>Seven Cross</strong>! Sou o Seven Bot. Como posso te ajudar hoje?</p>
-        </div>
-        <div class="chat-quick-replies" id="quickReplies">
-          <button class="quick-reply" data-reply="planos">💰 Ver Planos</button>
-          <button class="quick-reply" data-reply="horario">🕐 Horários</button>
-          <button class="quick-reply" data-reply="localizacao">📍 Localização</button>
-          <button class="quick-reply" data-reply="contato">📲 Contato</button>
-          <button class="quick-reply" data-reply="modalidades">🏋️ Modalidades</button>
-        </div>
+      <div class="chat-quick-replies" id="quickReplies">
+        <button class="quick-btn" data-msg="planos">💰 Planos e preços</button>
+        <button class="quick-btn" data-msg="horario">🕐 Horário de funcionamento</button>
+        <button class="quick-btn" data-msg="localizacao">📍 Localização</button>
+        <button class="quick-btn" data-msg="contato">📱 Falar com um consultor</button>
       </div>
-      <div class="chat-input-area">
-        <input type="text" id="chatInput" placeholder="Digite sua mensagem..." />
-        <button id="chatSend">➤</button>
-      </div>
+    </div>
+    <div class="chat-input-area">
+      <input type="text" id="chatInput" placeholder="Digite sua mensagem..." autocomplete="off" />
+      <button id="chatSend">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg>
+      </button>
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-  <script src="script.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
