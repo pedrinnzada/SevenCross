@@ -1602,6 +1602,8 @@ body:has(button:hover) .cursor-follower { width: 60px; height: 60px; border-colo
   .galeria-grid { grid-template-columns: repeat(2, 1fr); }
   .galeria-big { grid-column: span 2; }
   .galeria-wide { grid-column: span 2; }
+  .hero-title { font-size: clamp(60px, 18vw, 100px); margin-bottom: 40px; }
+  .hero-tagline { margin-top: 80px; margin-bottom: 32px; }
 }
 
 @media (max-width: 768px) {
@@ -1624,10 +1626,13 @@ body:has(button:hover) .cursor-follower { width: 60px; height: 60px; border-colo
   .galeria-grid { grid-template-columns: 1fr; }
   .galeria-big, .galeria-wide { grid-column: span 1; }
   .wave-section { height: auto; padding: 60px 24px; }
+  .hero-title { font-size: clamp(60px, 18vw, 100px); margin-bottom: 40px; }
+  .hero-tagline { margin-top: 80px; margin-bottom: 32px; }
 }
 
 @media (max-width: 480px) {
-  .hero-title { font-size: clamp(60px, 18vw, 100px); }
+  .hero-title { font-size: clamp(60px, 18vw, 100px); margin-bottom: 40px; }
+  .hero-tagline { margin-top: 80px; margin-bottom: 32px; }
   .hero-stats { flex-direction: column; }
   .stat-divider { width: 100%; height: 1px; }
   .stat { padding: 12px 0; }
